@@ -42,6 +42,17 @@ def generate_sequences(sequence: list) -> list:
         for sub_sequence in sub_sequences:
             gen_sequences.append(codon + sub_sequence)
     return gen_sequences
+    output(gen_sequences)
+   
+"""
+Outputs the sequences to a text file
+"""
+def output(outputsequence):
+    text_file = open("output.txt")
+    string_output =''.join(outputsequence)
+    text_file.write(string_output)
+    text_file.close()
+
 
 if __name__ == '__main__':
     proteins = input("Proteins (single letter notation)> ")
