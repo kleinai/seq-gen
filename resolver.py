@@ -42,7 +42,6 @@ def generate_sequences(sequence: list) -> list:
         for sub_sequence in sub_sequences:
             gen_sequences.append(codon + sub_sequence)
     return gen_sequences
-    output(gen_sequences)
    
 """
 Outputs the sequences to a text file
