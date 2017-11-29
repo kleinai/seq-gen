@@ -48,8 +48,9 @@ def generate_sequences(sequence: list) -> list:
 Outputs the sequences to a text file
 """
 def output(outputsequence):
-    text_file = open("output.txt")
-    string_output =''.join(outputsequence)
+    from os import linesep
+    text_file = open("output.txt", mode='w')
+    string_output = linesep.join(outputsequence)
     text_file.write(string_output)
     text_file.close()
 
@@ -58,5 +59,5 @@ if __name__ == '__main__':
     proteins = input("Proteins (single letter notation)> ")
     proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
     possible_sequences = generate_sequences(proteins)
-    for i in range(len(possible_sequences)):
-        print(possible_sequences[i])
+    output(possible_sequences)
+    print("Wrote {} sequences".format(len(possible_sequences)))
