@@ -2,8 +2,28 @@
 Inverse codon map. Synonymous codons should be in a list
 """
 inverse_codon_map = {
-    "T": ["ACA"]
-}
+    'K': ("AAA", "AAG"),
+    'N': ("AAC", "AAU"),
+    'T': ("ACA", "ACC", "ACG", "ACU"),
+    'R': ("AGA", "AGG", "CGA", "CGC", "CGG", "CGU"),
+    'S': ("AGC", "AGU", "UCA", "UCC", "UCG", "UCU"),
+    'I': ("AUA", "AUC", "AUU"),
+    'M': ("AUG"),
+    'Q': ("CAA", "CAG"),
+    'H': ("CAC", "CAU"),
+    'P': ("CCA", "CCC", "CCG", "CCU"),
+    'L': ("CUA", "CUC", "CUG", "CUU", "UUA", "UUG"),
+    'E': ("GAA", "GAG"),
+    'D': ("GAC", "GAU"),
+    'A': ("GCA", "GCC", "GCG", "GCU"),
+    'G': ("GGA", "GGC", "GGG", "GGU"),
+    'V': ("GUA", "GUC", "GUG", "GUU"),
+    '_': ("UAA", "UAG", "UGA"),
+    'Y': ("UAC", "UAU"),
+    'C': ("UGC", "UGU"),
+    'F': ("UUC", "UUU"),
+    'W': ("UGG")
+    }
 
 
 class UnmappedProteinError(Exception):
@@ -28,4 +48,4 @@ if __name__ == '__main__':
     proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
     possible_sequences = generate_sequences(proteins)
     for i in range(len(possible_sequences)):
-        print(possible_sequences[i-1])
+        print(possible_sequences[i])
