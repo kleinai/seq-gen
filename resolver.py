@@ -23,8 +23,9 @@ def generate_sequences(sequence: list) -> list:
             gen_sequences.append(codon + sub_sequence)
     return gen_sequences
 
-
 if __name__ == '__main__':
     proteins = input("Proteins (single letter notation)> ")
     proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
-    print(generate_sequences(proteins))
+    possible_sequences = generate_sequences(proteins)
+    for i in range(len(possible_sequences)):
+        print(possible_sequences[i-1])
