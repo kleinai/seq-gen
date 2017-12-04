@@ -36,7 +36,7 @@ class UnmappedProteinError(Exception):
     """
     pass
 
-def get(inverse_codon_map):
+def get_seq(inverse_codon_map):
     """
     Asks user for input of a string with 1-letter protein codes, saved in variable proteins.
     Goes through protein string and makes a list with just the valid protein codes.
