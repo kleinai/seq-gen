@@ -84,7 +84,7 @@ def main():
     possible_sequences = generate_sequences(proteins, inverse_codon_map)
     output(possible_sequences)
     print("Wrote {} sequences".format(len(possible_sequences)))
-    print(possible_sequences)
+   
     
 if __name__ == '__main__':
     main()
