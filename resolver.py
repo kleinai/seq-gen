@@ -30,6 +30,21 @@ def create_inv_codon_map():
     return inverse_codon_map
 
 
+def get_seq(inverse_codon_map):
+    """
+    Asks user for input of a string with 1-letter protein codes, saved in variable proteins.
+    Goes through protein string and makes a list with just the valid protein codes.
+    If list is empty, either an empty string or invalid characters were entered, so it calls itself to ask for new input
+    :param inverse_codon_map: dictionary with inverse codons
+    :return: list of valid protein 1-letter codes
+    """
+    proteins = input("Proteins (single letter notation)> ")
+    proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
+    if len(proteins) == 0:
+        print("Error: Either all characters were invalid or empty string was entered.")
+        get(inverse_codon_map)
+    return proteins
+
 def generate_sequences(sequence: list, inverse_codon_map) -> list:
     """
     Generates a list of DNA sequences from a given protein sequence
@@ -49,6 +64,7 @@ def generate_sequences(sequence: list, inverse_codon_map) -> list:
 def output(outputsequence):
     """
     Outputs the sequences to a text file
+    Mostly written by Patrick with help cleaning up the code by Aidan
     """
     from os import linesep
     text_file = open("output.txt", mode='w') # Creates text file to store the RNA sequence
@@ -62,8 +78,7 @@ def main():
     Contrib.: Aidan K.
     """
     inverse_codon_map = create_inv_codon_map()
-    proteins = input("Proteins (single letter notation)> ")
-    proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()] # Correct input. Capitalize and filter
+    proteins = get_seq(inverse_codon_map)
     possible_sequences = generate_sequences(proteins, inverse_codon_map)
     output(possible_sequences)
     print("Wrote {} sequences".format(len(possible_sequences)))
