@@ -80,7 +80,7 @@ def main():
     Runs all the methods in sequence and then display the number of possible sequences of RNA found
     """
     inverse_codon_map = create_inv_codon_map()
-    proteins = get(inverse_codon_map)
+    proteins = get_seq(inverse_codon_map)
     possible_sequences = generate_sequences(proteins, inverse_codon_map)
     output(possible_sequences)
     print("Wrote {} sequences".format(len(possible_sequences)))
