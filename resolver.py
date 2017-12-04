@@ -30,16 +30,10 @@ def create_inv_codon_map():
     return inverse_codon_map
 
 
-class UnmappedProteinError(Exception):
-    """
-    class handles anytime something is passed as a protein that isn't really a protein
-    """
-    pass
-
-
 def generate_sequences(sequence: list, inverse_codon_map) -> list:
     """
     Generates a list of DNA sequences from a given protein sequence
+    Contrib.: Aidan K.
     """
     sub_sequences = ['']
     if len(sequence) > 1:
@@ -65,10 +59,11 @@ def output(outputsequence):
 def main():
     """
     Runs all the methods in sequence and then display the number of possible sequences of RNA found
+    Contrib.: Aidan K.
     """
     inverse_codon_map = create_inv_codon_map()
     proteins = input("Proteins (single letter notation)> ")
-    proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
+    proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()] # Correct input. Capitalize and filter
     possible_sequences = generate_sequences(proteins, inverse_codon_map)
     output(possible_sequences)
     print("Wrote {} sequences".format(len(possible_sequences)))
