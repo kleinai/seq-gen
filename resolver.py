@@ -3,6 +3,7 @@ def create_inv_codon_map():
     Creates a dictionary:
     keys = 1-letter protein code
     entries = corresponding codons
+    Written by Jennifer Pfaff
     """
     inverse_codon_map = {
         'K': ["AAA", "AAG"],
