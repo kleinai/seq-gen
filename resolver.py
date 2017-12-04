@@ -55,6 +55,7 @@ def generate_sequences(sequence: list, inverse_codon_map) -> list:
 def output(outputsequence):
     """
     Outputs the sequences to a text file
+    Mostly written by Patrick with help cleaning up the code by Aidan
     """
     from os import linesep
     text_file = open("output.txt", mode='w') # Creates text file to store the RNA sequence
