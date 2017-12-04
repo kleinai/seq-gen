@@ -43,7 +43,7 @@ def get_seq(inverse_codon_map):
     proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
     if len(proteins) == 0:
         print("Error: Either all characters were invalid or empty string was entered.")
-        get(inverse_codon_map)
+        get_seq(inverse_codon_map)
     return proteins
 
 def generate_sequences(sequence: list, inverse_codon_map) -> list:
