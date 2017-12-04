@@ -36,6 +36,20 @@ class UnmappedProteinError(Exception):
     """
     pass
 
+def get(inverse_codon_map):
+    """
+    Asks user for input of a string with 1-letter protein codes, saved in variable proteins.
+    Goes through protein string and makes a list with just the valid protein codes.
+    If list is empty, either an empty string or invalid characters were entered, so it calls itself to ask for new input
+    :param inverse_codon_map: dictionary with inverse codons
+    :return: list of valid protein 1-letter codes
+    """
+    proteins = input("Proteins (single letter notation)> ")
+    proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
+    if len(proteins) == 0:
+        print("Error: Either all characters were invalid or empty string was entered.")
+        get(inverse_codon_map)
+    return proteins
 
 def generate_sequences(sequence: list, inverse_codon_map) -> list:
     """
@@ -49,9 +63,7 @@ def generate_sequences(sequence: list, inverse_codon_map) -> list:
         for sub_sequence in sub_sequences:
             gen_sequences.append(codon + sub_sequence)
     return gen_sequences
-    output(gen_sequences)
    
-
 def output(outputsequence):
     """
     Outputs the sequences to a text file
@@ -62,18 +74,17 @@ def output(outputsequence):
     string_output = linesep.join(outputsequence) # turns the array input into a string that can be written to the text file
     text_file.write(string_output) # Writes the output to the output text file
     text_file.close()
-
+    
 def main():
     """
     Runs all the methods in sequence and then display the number of possible sequences of RNA found
     """
     inverse_codon_map = create_inv_codon_map()
-    proteins = input("Proteins (single letter notation)> ")
-    proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
+    proteins = get(inverse_codon_map)
     possible_sequences = generate_sequences(proteins, inverse_codon_map)
     output(possible_sequences)
     print("Wrote {} sequences".format(len(possible_sequences)))
-
+    print(possible_sequences)
     
 if __name__ == '__main__':
     main()
