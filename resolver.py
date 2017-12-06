@@ -38,6 +38,7 @@ def get_seq(inverse_codon_map):
     If list is empty, either an empty string or invalid characters were entered, so it calls itself to ask for new input
     :param inverse_codon_map: dictionary with inverse codons
     :return: list of valid protein 1-letter codes
+    Contributors: Aidan, Hannah
     """
     proteins = input("Proteins (single letter notation)> ")
     proteins = [p for p in list(proteins.upper()) if p in inverse_codon_map.keys()]
